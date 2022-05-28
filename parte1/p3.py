@@ -1,4 +1,4 @@
-# -- Nos muestra los clubes de la liga santander. 
+# -- Nos muestra una liga que indiquemos. 
 
 # -- Librerias 
 import requests
@@ -22,33 +22,37 @@ for info in l_info_competiciones["data"]["competition"]:
         lista_cod_competiciones.append(info["id"])
 
 # -- PROGRAMA
-payload["competition_id"]=lista_cod_competiciones[lista_nombre_competiciones.index("LaLiga Santander")]
-clas_liga=requests.get(URL_BASE+"leagues/table.json?competition_id=3",params=payload)
-tabla_liga=clas_liga.json()
-lista1=[]
-for equipo in tabla_liga["data"]["table"]:
-    lista1.append(info["name"])
-if len(lista1)<1:
-    print("No se encontraron datos de esta liga")
+nombre_liga=input("Introduce el nombre de una competición: ")
+if nombre_liga not in lista_nombre_competiciones:
+    print("No se ha encontrado ninguna competición con ese nombre")
 else:
-    print("-- Clubes: --")
-    print("Club: ",lista1[0])
-    print("Club: ",lista1[1])
-    print("Club: ",lista1[2])
-    print("Club: ",lista1[3])
-    print("Club: ",lista1[4])
-    print("Club: ",lista1[5])
-    print("Club: ",lista1[6])
-    print("Club: ",lista1[7])
-    print("Club: ",lista1[8])
-    print("Club: ",lista1[9])
-    print("Club: ",lista1[10])
-    print("Club: ",lista1[11])
-    print("Club: ",lista1[12])
-    print("Club: ",lista1[13])
-    print("Club: ",lista1[14])
-    print("Club: ",lista1[15])
-    print("Club: ",lista1[16])
-    print("Club: ",lista1[17])
-    print("Club: ",lista1[18])
-    print("Club: ",lista1[19])
+    payload["competition_id"]=lista_cod_competiciones[lista_nombre_competiciones.index(nombre_liga)]
+    clas_liga=requests.get(URL_BASE+"leagues/table.json",params=payload)
+    tabla_liga=clas_liga.json()
+    lista1=[]
+    for equipo in tabla_liga["data"]["table"]:
+        lista1.append(equipo["name"])
+    if len(lista1)<1:
+        print("No se encontraron datos de esta liga")
+    else:
+        print("-- Clubes: --")
+        print("Club: ",lista1[0])
+        print("Club: ",lista1[1])
+        print("Club: ",lista1[2])
+        print("Club: ",lista1[3])
+        print("Club: ",lista1[4])
+        print("Club: ",lista1[5])
+        print("Club: ",lista1[6])
+        print("Club: ",lista1[7])
+        print("Club: ",lista1[8])
+        print("Club: ",lista1[9])
+        print("Club: ",lista1[10])
+        print("Club: ",lista1[11])
+        print("Club: ",lista1[12])
+        print("Club: ",lista1[13])
+        print("Club: ",lista1[14])
+        print("Club: ",lista1[15])
+        print("Club: ",lista1[16])
+        print("Club: ",lista1[17])
+        print("Club: ",lista1[18])
+        print("Club: ",lista1[19])

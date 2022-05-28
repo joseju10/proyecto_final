@@ -27,7 +27,7 @@ for info in l_lista_paises["data"]["country"]:
             lista.append(info["name"])
         if len(lista)!=0:
             print(pais)
-            print("-------Competiciones---------")
+            print("-- Competiciones --")
             for elem in lista:
                 print(elem)
         else:
